@@ -2,3 +2,6 @@
 /__pycache__
 /flask
 /tmp
+
+# System folders #
+.DS_Store
