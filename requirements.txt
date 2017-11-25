@@ -3,4 +3,4 @@ gunicorn
 itsdangerous
 Jinja2
 MarkupSafe
-Zerkzeug
+Werkzeug
