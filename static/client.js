@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Connect to the server
-    var socket = io.connect('127.0.0.1:5000');
+    var socket = io.connect(window.location.host);
 
     // Focus and move cursor to input field
     var input = document.getElementById('userMessage')
