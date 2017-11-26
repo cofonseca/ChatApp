@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, url_for, redirect
-from flask.ext.socketio import SocketIO, emit, join_room
+from flask_socketio import SocketIO, send
 
 
 # need some sort of auth library
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 's3cr3tk3y'
+socketio = SocketIO(app)
 
 
 # Routes
@@ -11,6 +13,11 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+@socketio.on('message')
+def handleMessage(msg):
+    print('Message: ' + msg)
+    send(msg, broadcast=True)
 
 # /chat/
 # redirect to /chat/general
@@ -29,4 +36,4 @@ def index():
 
 # Start The App
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app)
