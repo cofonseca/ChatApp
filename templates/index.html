@@ -6,7 +6,11 @@
         <title>Chat!</title>
         <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.0.4/dist/socket.io.js"></script>
         <script src="{{ url_for('static', filename='client.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename="style.css") }}">
     </head>
     <body>
+        <ul id="messageArea"></ul>
+        <input type="text" id="userMessage">
+        <button id="send">Send</button>
     </body>
 </html>
