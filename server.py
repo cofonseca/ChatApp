@@ -14,10 +14,17 @@ socketio = SocketIO(app)
 def index():
     return render_template('index.html')
 
+@app.route('/chat', methods=['GET', 'POST'])
+def chat():
+    userId = request.form.get('userId')
+    print(userId)
+    return render_template('chat.html', userId=userId)
+
 @socketio.on('message')
 def handleMessage(msg):
     print('Message: ' + msg)
     send(msg, broadcast=True)
+    #broadcast=False could be used for 1:1 private chatting
 
 # /chat/
 # redirect to /chat/general
