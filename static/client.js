@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // When client conects, send a message to the server.
     socket.on('connect', function() {
-        socket.send('Client has connected!');
+        console.log('Connected to Server');
     });
 
     // When message gets sent, append it to the screen
