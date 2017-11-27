@@ -8,27 +8,31 @@ document.addEventListener('DOMContentLoaded', function() {
     input.focus()
     input.select()
 
-    // When client conects, send a message to the server.
+    // When client conects, log to console.
     socket.on('connect', function() {
-        console.log('Connected to Server');
+        console.log('Connected to Server as ' + userId);
     });
 
     // When message gets sent, append it to the screen
     socket.on('message', function(msg) {
         var messageArea = document.getElementById('messageArea');
         var messageLine = document.createElement("li");
-        messageLine.appendChild(document.createTextNode(userId + ': ' + msg));
+        messageLine.appendChild(document.createTextNode(msg));
         messageArea.appendChild(messageLine);
     });
-
 
     var sendButton = document.getElementById('send');
 
     // When message gets sent, send it to the server and clear the input field
     sendButton.addEventListener('click', function() {
-        var msg = document.getElementById('userMessage')
-        socket.send(msg.value)
-        msg.value = ''
+        var msgField = document.getElementById('userMessage')
+        if ((msgField.value).length > 0) {
+            msg = userId + ': ' + msgField.value
+            socket.send(msg)
+            msgField.value = ''
+        } else {
+            return
+        }
     });
 
     // When the enter key is pressed, click the button

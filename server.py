@@ -22,7 +22,6 @@ def chat():
 
 @socketio.on('message')
 def handleMessage(msg):
-    print('Message: ' + msg)
     send(msg, broadcast=True)
     #broadcast=False could be used for 1:1 private chatting
 
