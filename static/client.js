@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     socket.on('message', function(msg) {
         var messageArea = document.getElementById('messageArea');
         var messageLine = document.createElement("li");
-        messageLine.appendChild(document.createTextNode(msg));
+        messageLine.appendChild(document.createTextNode(userId + ': ' + msg));
         messageArea.appendChild(messageLine);
     });
 
