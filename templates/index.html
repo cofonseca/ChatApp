@@ -1,6 +1,8 @@
 {% extends 'layout.html' %}
 {% block body %}
-<ul id="messageArea"></ul>
-<input type="text" id="userMessage">
-<button id="send">Send</button>
+<h2>Please enter your name:</h2>
+<form action="/chat" method="POST">
+    <input name="userId" type="text" id="userId">
+    <button id="chat" type="submit">Chat</button>
+</form>
 {% endblock %}
